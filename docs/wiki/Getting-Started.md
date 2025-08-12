@@ -26,7 +26,7 @@ Complete setup guide for the MLB Analytics Platform development environment.
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/mlb_analytics.git
+git clone https://github.com/bennystone/mlb_analytics.git
 cd mlb_analytics
 
 # Verify the structure

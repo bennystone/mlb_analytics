@@ -11,6 +11,6 @@
 - [Troubleshooting](Troubleshooting)
 
 ## 🔗 Quick Links
-- [GitHub Repository](https://github.com/yourusername/mlb_analytics)
+- [GitHub Repository](https://github.com/bennystone/mlb_analytics)
 - [Live API](https://mlb-analytics-api-xxxxx-uc.a.run.app)
 - [Live Dashboard](https://mlb-analytics-dashboard-xxxxx-uc.a.run.app)

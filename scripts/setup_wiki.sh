@@ -75,7 +75,7 @@ cat > "$WIKI_DIR/_Sidebar.md" << 'EOF'
 - [Troubleshooting](Troubleshooting)
 
 ## 🔗 Quick Links
-- [GitHub Repository](https://github.com/yourusername/mlb_analytics)
+- [GitHub Repository](https://github.com/bennystone/mlb_analytics)
 - [Live API](https://mlb-analytics-api-xxxxx-uc.a.run.app)
 - [Live Dashboard](https://mlb-analytics-dashboard-xxxxx-uc.a.run.app)
 EOF
@@ -90,7 +90,7 @@ This directory contains the GitHub Wiki documentation for the MLB Analytics Plat
 ## Setup Instructions
 
 1. **Enable GitHub Wiki**: Go to your repository settings and enable the Wiki feature
-2. **Clone the wiki**: `git clone https://github.com/yourusername/mlb_analytics.wiki.git`
+2. **Clone the wiki**: `git clone https://github.com/bennystone/mlb_analytics.wiki.git`
 3. **Copy files**: Copy all files from this `wiki/` directory to the cloned wiki repository
 4. **Commit and push**: 
    ```bash
@@ -114,7 +114,7 @@ This directory contains the GitHub Wiki documentation for the MLB Analytics Plat
 ## Customization
 
 Update the following placeholders in the documentation:
-- `yourusername` - Your GitHub username
+- `bennystone` - Your GitHub username
 - `mlb-analytics-api-xxxxx-uc.a.run.app` - Your actual API URL
 - `mlb-analytics-dashboard-xxxxx-uc.a.run.app` - Your actual dashboard URL
 EOF
@@ -125,7 +125,7 @@ echo "🎉 Wiki setup complete!"
 echo ""
 echo "📋 Next steps:"
 echo "1. Enable GitHub Wiki in your repository settings"
-echo "2. Clone the wiki: git clone https://github.com/yourusername/mlb_analytics.wiki.git"
+echo "2. Clone the wiki: git clone https://github.com/bennystone/mlb_analytics.wiki.git"
 echo "3. Copy files from ./wiki/ to the cloned wiki repository"
 echo "4. Update URLs and usernames in the documentation"
 echo "5. Commit and push the wiki changes"

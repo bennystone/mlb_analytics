@@ -5,7 +5,7 @@ This directory contains the GitHub Wiki documentation for the MLB Analytics Plat
 ## Setup Instructions
 
 1. **Enable GitHub Wiki**: Go to your repository settings and enable the Wiki feature
-2. **Clone the wiki**: `git clone https://github.com/yourusername/mlb_analytics.wiki.git`
+2. **Clone the wiki**: `git clone https://github.com/bennystone/mlb_analytics.wiki.git`
 3. **Copy files**: Copy all files from this `wiki/` directory to the cloned wiki repository
 4. **Commit and push**: 
    ```bash
@@ -29,6 +29,6 @@ This directory contains the GitHub Wiki documentation for the MLB Analytics Plat
 ## Customization
 
 Update the following placeholders in the documentation:
-- `yourusername` - Your GitHub username
+- `bennystone` - Your GitHub username
 - `mlb-analytics-api-xxxxx-uc.a.run.app` - Your actual API URL
 - `mlb-analytics-dashboard-xxxxx-uc.a.run.app` - Your actual dashboard URL

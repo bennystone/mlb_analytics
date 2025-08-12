@@ -7,12 +7,12 @@ A production-grade MLB data analytics platform demonstrating enterprise-level so
 ### Live Demo
 - **API Documentation**: [Swagger UI](https://mlb-analytics-api-xxxxx-uc.a.run.app/docs)
 - **Streamlit Dashboard**: [Demo Dashboard](https://mlb-analytics-dashboard-xxxxx-uc.a.run.app)
-- **GitHub Repository**: [Source Code](https://github.com/yourusername/mlb_analytics)
+- **GitHub Repository**: [Source Code](https://github.com/bennystone/mlb_analytics)
 
 ### Local Development
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/mlb_analytics.git
+git clone https://github.com/bennystone/mlb_analytics.git
 cd mlb_analytics
 
 # Start with Docker Compose
@@ -144,7 +144,7 @@ This project demonstrates enterprise-level software engineering practices suitab
 
 ## 📄 License
 
-MIT License - see [LICENSE](https://github.com/yourusername/mlb_analytics/blob/main/LICENSE) for details.
+MIT License - see [LICENSE](https://github.com/bennystone/mlb_analytics/blob/main/LICENSE) for details.
 
 ---
 
