@@ -68,7 +68,8 @@ gcloud functions deploy extract-daily-schedule \
     --source src/data/cloud_functions \
     --entry-point extract_daily_schedule_cloud_function \
     --region $REGION \
-    --set-env-vars PROJECT_ID=$PROJECT_ID,DATASET_ID=$DATASET_ID
+    --set-env-vars PROJECT_ID=$PROJECT_ID,DATASET_ID=$DATASET_ID \
+    --no-gen2
 
 # Function 2: Live game data extraction
 echo "  Deploying live game data extraction function..."
@@ -79,7 +80,8 @@ gcloud functions deploy extract-live-game-data \
     --source src/data/cloud_functions \
     --entry-point extract_live_game_data_cloud_function \
     --region $REGION \
-    --set-env-vars PROJECT_ID=$PROJECT_ID,DATASET_ID=$DATASET_ID
+    --set-env-vars PROJECT_ID=$PROJECT_ID,DATASET_ID=$DATASET_ID \
+    --no-gen2
 
 echo "✅ Cloud Functions deployed successfully"
 
@@ -96,7 +98,6 @@ if ! gcloud composer environments list --locations=$REGION --filter="name:$COMPO
         --image-version composer-2.0.31-airflow-2.7.3 \
         --machine-type n1-standard-2 \
         --node-count 3 \
-        --disk-size 100 \
         --airflow-configs=core-dags_are_paused_at_creation=true
     
     echo "✅ Cloud Composer environment created"
