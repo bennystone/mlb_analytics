@@ -1,0 +1,31 @@
+# Ignore everything not needed for the image
+.git/
+.github/
+.vscode/
+.idea/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual envs
+.venv/
+venv/
+ENV/
+
+# Local files
+.env
+.env.*
+.DS_Store
+
+# Tests and docs (not required in runtime image)
+tests/
+docs/
+
+# Credentials should be mounted, not baked into image
+credentials/
+
+# Build artifacts
+build/
+dist/
+.eggs/
+*.egg-info/

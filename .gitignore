@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+.eggs/
+*.egg-info/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage*
+.cache/
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# dotenv
+.env
+.env.local
+.env.*.local
+
+# MacOS
+.DS_Store
+
+# Docker
+*.log
+credentials/
+
+# Python/mypy
+.mypy_cache/
+
+# Streamlit
+.streamlit/
+
+# Existing
+docs/
