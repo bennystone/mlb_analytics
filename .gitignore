@@ -46,3 +46,4 @@ credentials/
 
 # Existing
 local-notes/
+env.template
