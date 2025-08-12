@@ -336,10 +336,10 @@ optimize_tables_task = BigQueryExecuteQueryOperator(
     sql="""
     -- Optimize tables by clustering
     OPTIMIZE TABLE `{{ params.project_id }}.{{ params.dataset_id }}.games`
-    WHERE _partition_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY);
+    WHERE partition_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY);
     
     OPTIMIZE TABLE `{{ params.project_id }}.{{ params.dataset_id }}.game_events`
-    WHERE _partition_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY);
+    WHERE partition_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY);
     """,
     params={
         'project_id': PROJECT_ID,

@@ -35,7 +35,7 @@ GAMES_SCHEMA = [
     SchemaField("is_live", "BOOLEAN", mode="REQUIRED"),
     SchemaField("raw_data", "JSON", mode="NULLABLE"),
     SchemaField("extraction_timestamp", "TIMESTAMP", mode="REQUIRED"),
-    SchemaField("_partition_date", "DATE", mode="REQUIRED"),
+    SchemaField("partition_date", "DATE", mode="REQUIRED"),
 ]
 
 TEAMS_SCHEMA = [
@@ -167,7 +167,7 @@ GAME_EVENTS_SCHEMA = [
     SchemaField("event_timestamp", "TIMESTAMP", mode="REQUIRED"),
     SchemaField("raw_data", "JSON", mode="NULLABLE"),
     SchemaField("extraction_timestamp", "TIMESTAMP", mode="REQUIRED"),
-    SchemaField("_partition_date", "DATE", mode="REQUIRED"),
+    SchemaField("partition_date", "DATE", mode="REQUIRED"),
 ]
 
 
@@ -202,7 +202,7 @@ class BigQueryDataWarehouse:
         # Configure partitioning and clustering
         table.time_partitioning = bigquery.TimePartitioning(
             type_=bigquery.TimePartitioningType.DAY,
-            field="_partition_date"
+            field="partition_date"
         )
         table.clustering_fields = ["home_team_id", "away_team_id"]
         
@@ -274,7 +274,7 @@ class BigQueryDataWarehouse:
         # Configure partitioning
         table.time_partitioning = bigquery.TimePartitioning(
             type_=bigquery.TimePartitioningType.DAY,
-            field="_partition_date"
+            field="partition_date"
         )
         table.clustering_fields = ["game_id", "inning"]
         
@@ -331,7 +331,7 @@ class BigQueryDataWarehouse:
                     ps.games_played,
                     ps.batting_average,
                     ps.home_runs,
-                    ps.rbi,
+                    ps.runs_batted_in,
                     ps.ops,
                     ps.wins,
                     ps.losses,
@@ -427,7 +427,7 @@ def transform_game_data(raw_game_data: Dict[str, Any]) -> Dict[str, Any]:
         "is_live": game.get("status", {}).get("detailedState") == "In Progress",
         "raw_data": raw_game_data,
         "extraction_timestamp": datetime.now().isoformat(),
-        "_partition_date": game.get("datetime", {}).get("officialDate"),
+        "partition_date": game.get("datetime", {}).get("officialDate"),
     }
 
 

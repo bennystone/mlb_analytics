@@ -342,7 +342,7 @@ class BigQueryDataLoader:
             # Delete old partitions
             query = f"""
             DELETE FROM `{table_ref}`
-            WHERE _partition_date < '{cutoff_date_str}'
+            WHERE partition_date < '{cutoff_date_str}'
             """
             
             job = self.client.query(query)
