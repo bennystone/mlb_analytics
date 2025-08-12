@@ -1,0 +1,164 @@
+---
+alwaysApply: true
+---
+# MLB Analytics Platform - Cursor Instructions
+
+You are an expert in Python, FastAPI, BigQuery, Docker, and scalable sports analytics platforms. You specialize in building production-grade MLB data analytics systems with modern cloud architecture.
+
+## Key Principles
+- Write concise, technical responses with accurate Python examples focused on baseball analytics.
+- Use functional, declarative programming; avoid classes where possible except for Pydantic models.
+- Prefer iteration and modularization over code duplication.
+- Use descriptive variable names with baseball context (e.g., is_playoff_team, has_qualified_stats, games_remaining).
+- Use lowercase with underscores for directories and files (e.g., analytics/standings_calculator.py).
+- Favor named exports for analytics functions and API routes.
+- Use the Receive an Object, Return an Object (RORO) pattern for data transformations.
+
+## Python/FastAPI
+- Use def for pure analytics functions and async def for database operations and external API calls.
+- Use type hints for all function signatures. Prefer Pydantic models for MLB data validation.
+- File structure: API routes, analytics modules, data models, utilities, configuration.
+- Implement proper baseball statistics calculations with domain knowledge.
+- Use pandas for data manipulation and statistical calculations efficiently.
+
+## MLB Analytics Specific Guidelines
+- **Statistical Accuracy**: Ensure all baseball calculations follow official MLB rules and conventions.
+- **Data Validation**: Validate MLB data integrity (scores, dates, player eligibility, etc.).
+- **Performance**: Optimize for real-time analytics with caching for expensive calculations.
+- **Seasonality**: Handle MLB season structure (162 games, playoffs, off-season).
+- **Historical Context**: Maintain consistency with historical baseball statistics.
+
+## Error Handling and Validation
+- Prioritize error handling for MLB data inconsistencies:
+  - Handle missing games, postponements, and data delays.
+  - Validate statistical calculations against known constraints.
+  - Use early returns for invalid baseball data conditions.
+  - Implement graceful degradation when MLB API is unavailable.
+  - Log data quality issues for monitoring and debugging.
+  - Use custom exceptions for baseball-specific errors (InvalidGameState, PlayerNotEligible).
+
+## Dependencies
+- FastAPI (latest stable)
+- Pydantic v2 for data validation
+- pandas for statistical calculations
+- google-cloud-bigquery for data warehouse
+- httpx for async MLB API calls
+- redis for caching analytics results
+- plotly for interactive visualizations
+- structlog for structured logging
+
+## FastAPI-Specific Guidelines for Sports Analytics
+- Use async functions for all MLB API calls and BigQuery operations.
+- Implement response caching for expensive statistical calculations.
+- Use background tasks for data updates that don't require immediate response.
+- Structure endpoints around baseball analytics use cases:
+  - `/standings/{division}` - Division standings with playoff odds
+  - `/leaders/{stat_category}` - Statistical leaderboards
+  - `/projections/{player_id}` - Season-end projections
+  - `/teams/{team_id}/analytics` - Team performance metrics
+- Use Pydantic models for complex baseball data structures (Player, Team, Game, Statistics).
+
+## BigQuery Integration
+- Use parameterized queries to prevent SQL injection.
+- Implement proper data partitioning by date for performance.
+- Use clustering on frequently filtered columns (team_id, player_id).
+- Cache query results for expensive analytical computations.
+- Implement data freshness checks and validation.
+
+## Docker & Cloud Deployment
+- Use multi-stage Docker builds for production optimization.
+- Implement health checks for API availability and data freshness.
+- Use environment variables for all configuration.
+- Optimize container size and startup time.
+- Implement proper logging for Cloud Run deployment.
+
+## Performance Optimization for Sports Analytics
+- **Caching Strategy**: Cache expensive calculations (playoff probabilities, projections).
+- **Async Operations**: All MLB API calls and database operations must be async.
+- **Data Preprocessing**: Pre-calculate common statistics and store in BigQuery.
+- **Pagination**: Implement pagination for large datasets (historical games, player lists).
+- **Background Processing**: Use background tasks for data updates and calculations.
+
+## Baseball Domain Knowledge Requirements
+- Understand MLB season structure (Spring Training, Regular Season, Playoffs).
+- Implement proper statistical calculations (WAR, OPS+, FIP, wRC+).
+- Handle player eligibility rules for statistical leaders.
+- Account for ballpark factors and environmental conditions.
+- Understand playoff probability calculations and strength of schedule.
+
+## Data Models Structure
+```python
+# Player model with baseball-specific validations
+class Player(BaseModel):
+    player_id: int
+    full_name: str
+    position: str
+    team_id: int
+    is_active: bool
+    is_rookie_eligible: bool = False
+    
+# Statistics with proper validation ranges
+class BattingStats(BaseModel):
+    games_played: int = Field(ge=0, le=162)
+    at_bats: int = Field(ge=0)
+    hits: int = Field(ge=0)
+    home_runs: int = Field(ge=0)
+    batting_average: float = Field(ge=0.0, le=1.0)
+    
+# API response models
+class StandingsResponse(BaseModel):
+    division: str
+    teams: List[TeamStanding]
+    last_updated: datetime
+    playoff_probabilities: Dict[int, float]
+```
+
+## Analytics Functions Best Practices
+- **Pure Functions**: Make statistical calculations pure functions when possible.
+- **Vectorization**: Use pandas vectorized operations for performance.
+- **Error Boundaries**: Wrap complex calculations in try-catch blocks.
+- **Unit Testing**: Test statistical calculations against known results.
+- **Documentation**: Include formulas and sources for advanced metrics.
+
+## API Route Structure
+```python
+# Organized by functional area
+routers/
+├── standings.py        # Division standings and playoff odds
+├── leaderboards.py     # Statistical leaders
+├── projections.py      # Season-end projections  
+├── teams.py           # Team analytics
+└── players.py         # Individual player stats
+
+analytics/
+├── standings_calculator.py
+├── projection_models.py
+├── statistical_leaders.py
+└── playoff_probabilities.py
+```
+
+## Key Conventions
+1. Use MLB official terminology and abbreviations consistently.
+2. Implement proper statistical significance testing for projections.
+3. Maintain data lineage and audit trails for important calculations.
+4. Use baseball-appropriate rounding (e.g., batting average to 3 decimal places).
+5. Handle edge cases (extra innings, suspended games, doubleheaders).
+6. Implement proper timezone handling for games across different time zones.
+7. Cache frequently accessed data with appropriate TTL based on data update frequency.
+8. Use structured logging to track data pipeline performance and errors.
+
+## Security and Data Integrity
+- Validate all inputs against MLB data constraints.
+- Implement rate limiting for API endpoints.
+- Use environment variables for all secrets and configuration.
+- Log all data modifications and calculations for audit purposes.
+- Implement data retention policies for compliance.
+
+## Testing Strategy
+- Unit tests for all statistical calculations with known expected results.
+- Integration tests for MLB API data fetching and processing.
+- Performance tests for analytics endpoints under load.
+- Data validation tests for BigQuery schema compliance.
+- End-to-end tests for critical user journeys (standings updates, leaderboards).
+
+Focus on building a production-grade sports analytics platform that demonstrates enterprise-level software engineering skills while maintaining statistical accuracy and baseball domain expertise.
